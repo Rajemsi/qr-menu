@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex" />
+  <title>QR Menü</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="card">
+    <div class="logo">QR</div>
+    <h1>QR Menü</h1>
+    <p id="message">Menü kontrol ediliyor...</p>
+    <p id="slot" class="slot"></p>
+  </main>
+
+  <script src="links.js"></script>
+  <script>
+    (() => {
+      const params = new URLSearchParams(window.location.search);
+      const rawId = (params.get('id') || '').trim();
+      const numericId = /^\d{1,3}$/.test(rawId) ? Number(rawId) : NaN;
+      const id = Number.isInteger(numericId) && numericId >= 1 && numericId <= 50
+        ? String(numericId).padStart(2, '0')
+        : null;
+
+      const message = document.getElementById('message');
+      const slot = document.getElementById('slot');
+
+      if (!id) {
+        message.textContent = 'Geçersiz QR kodu.';
+        return;
+      }
+
+      slot.textContent = `Menü No: ${id}`;
+      const target = MENU_LINKS[id];
+
+      if (!target) {
+        message.textContent = 'Bu menü henüz tanımlanmamıştır.';
+        return;
+      }
+
+      try {
+        const url = new URL(target);
+        if (url.protocol !== 'https:' && url.protocol !== 'http:') throw new Error();
+        message.textContent = 'Menüye yönlendiriliyorsunuz...';
+        window.location.replace(url.href);
+      } catch {
+        message.textContent = 'Bu menünün bağlantısı geçersiz. Lütfen işletmeyle iletişime geçin.';
+      }
+    })();
+  </script>
+</body>
+</html>
