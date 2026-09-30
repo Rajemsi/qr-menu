@@ -4,9 +4,9 @@
 
 const MENU_LINKS = {
   "01": "https://yandex.com.tr/profile/170600165449?lang=tr&utm_source=copy_link&utm_medium=social&utm_campaign=share",
-  "02": "allzinapp.com/happymoonspiyalepasa/menu/",
+  "02": "https://allzinapp.com/happymoonspiyalepasa/menu/",
   "03": "",
-  "04": "allzinapp.com/happymoonspiyalepasa/menu/",
+  "04": "https://allzinapp.com/happymoonspiyalepasa/menu/",
   "05": "",
   "06": "",
   "07": "",
