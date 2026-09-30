@@ -3,7 +3,7 @@
 // Boş bıraktığın numaralar yönlendirme yapmaz.
 
 const MENU_LINKS = {
-  "01": "",
+  "01": "https://yandex.com.tr/profile/170600165449?lang=tr&utm_source=copy_link&utm_medium=social&utm_campaign=share",
   "02": "",
   "03": "",
   "04": "",
